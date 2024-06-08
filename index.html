@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Piano</title>
+    <style>
+        .container{
+            width: 80%;
+            box-sizing: border-box;
+            background-color: black;
+            color: white;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            height: 180px;
+            width: 65px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(221, 221, 221);
+            transition: .3s ease-in-out all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>MY PIANO</h3>
+        <div id="note"></div>
+    </div>
+
+    <script>
+        const chords = ["a", "c", "d", "e", "f"];
+        const note = document.getElementById("note");
+
+        chords.forEach(chord => {
+            const button = document.createElement("button");
+
+            button.innerText = chord
+
+            button.addEventListener("click", () => {
+                const sound = new Audio(`/assets/${chord}.wav`)
+                sound.play()
+            })
+            note.appendChild(button);
+        })
+    </script>
+</body>
+
+</html>
